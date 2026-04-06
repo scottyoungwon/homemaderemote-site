@@ -5,225 +5,247 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy Policy — Homemade Remote</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --bg: #0a0a0a;
-    --surface: #111111;
-    --border: #1f1f1f;
-    --text: #e8e4dc;
-    --muted: #6b6460;
-    --accent: #f59e0b;
-  }
+:root {
+  --bg: #0a0a0a;
+  --surface: #111;
+  --border: #1a1a1a;
+  --border-bright: #252525;
+  --text: #e8dfd0;
+  --text-dim: #666;
+  --text-faint: #333;
+  --bone: #e8dfd0;
+  --bone-dim: rgba(232,224,212,0.08);
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+  --font-body: 'DM Sans', sans-serif;
+}
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', system-ui, sans-serif;
-    font-size: 16px;
-    line-height: 1.7;
-    min-height: 100vh;
-  }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
 
-  nav {
-    padding: 20px 40px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 999;
+}
 
-  .nav-logo {
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--text);
-    text-decoration: none;
-    letter-spacing: -0.02em;
-  }
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 18px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  background: rgba(10, 10, 10, 0.8);
+  border-bottom: 1px solid var(--border);
+}
 
-  .nav-logo span { color: var(--accent); }
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--text);
+  text-decoration: none;
+}
+.nav-logo span { color: rgba(232,224,212,0.55); }
 
-  .nav-back {
-    font-size: 13px;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
+.nav-back {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.nav-back:hover { color: var(--text); }
 
-  .nav-back:hover { color: var(--text); }
+/* ── MAIN ── */
+main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 120px 40px 100px;
+}
 
-  main {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 80px 40px 120px;
-  }
+.page-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 14px;
+}
 
-  .page-label {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 20px;
-  }
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
 
-  h1 {
-    font-size: clamp(28px, 4vw, 38px);
-    font-weight: 500;
-    letter-spacing: -0.03em;
-    line-height: 1.2;
-    margin-bottom: 12px;
-  }
+.updated {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-faint);
+  margin-bottom: 48px;
+  letter-spacing: 0.5px;
+}
 
-  .updated {
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 60px;
-    font-family: 'DM Mono', monospace;
-  }
+.zero-data-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bone-dim);
+  border: 1px solid rgba(232,224,212,0.1);
+  border-radius: 100px;
+  padding: 6px 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--bone);
+  margin-bottom: 36px;
+  letter-spacing: 0.5px;
+}
+.zero-data-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--bone);
+  border-radius: 50%;
+  opacity: 0.6;
+}
 
-  .tldr {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--accent);
-    border-radius: 8px;
-    padding: 24px 28px;
-    margin-bottom: 60px;
-  }
+.tldr {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--bone);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin-bottom: 56px;
+}
 
-  .tldr-label {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 10px;
-  }
+.tldr-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+}
 
-  .tldr p {
-    font-size: 15px;
-    color: var(--text);
-    line-height: 1.6;
-  }
+.tldr p {
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.65;
+}
 
-  section {
-    margin-bottom: 48px;
-  }
+section { margin-bottom: 44px; }
 
-  h2 {
-    font-size: 18px;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    margin-bottom: 16px;
-    color: var(--text);
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--border);
-  }
+h2 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
 
-  p {
-    font-size: 15px;
-    color: #b5b0a8;
-    margin-bottom: 14px;
-    line-height: 1.75;
-  }
+p {
+  font-size: 15px;
+  color: var(--text-dim);
+  margin-bottom: 14px;
+  line-height: 1.75;
+}
+p:last-child { margin-bottom: 0; }
 
-  p:last-child { margin-bottom: 0; }
+ul {
+  margin: 12px 0 14px 0;
+  padding-left: 20px;
+}
+li {
+  font-size: 15px;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+  line-height: 1.65;
+}
 
-  ul {
-    margin: 12px 0 14px 0;
-    padding-left: 20px;
-  }
+strong { color: var(--text); font-weight: 500; }
+a { color: var(--bone); text-decoration: none; opacity: 0.7; transition: opacity 0.15s; }
+a:hover { opacity: 1; }
 
-  li {
-    font-size: 15px;
-    color: #b5b0a8;
-    margin-bottom: 8px;
-    line-height: 1.65;
-  }
+/* ── FOOTER ── */
+footer {
+  padding: 36px 80px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.footer-copy {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-faint);
+}
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+.footer-links a {
+  font-size: 11px;
+  color: var(--text-faint);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  transition: color 0.15s;
+}
+.footer-links a:hover { color: var(--text-dim); }
 
-  strong {
-    color: var(--text);
-    font-weight: 500;
-  }
-
-  a {
-    color: var(--accent);
-    text-decoration: none;
-  }
-
-  a:hover { text-decoration: underline; }
-
-  .zero-data-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(245, 158, 11, 0.08);
-    border: 1px solid rgba(245, 158, 11, 0.2);
-    border-radius: 100px;
-    padding: 6px 14px;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--accent);
-    margin-bottom: 32px;
-    letter-spacing: 0.02em;
-  }
-
-  .zero-data-badge::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    background: var(--accent);
-    border-radius: 50%;
-  }
-
-  footer {
-    padding: 32px 40px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  .footer-copy {
-    font-size: 13px;
-    color: var(--muted);
-  }
-
-  .footer-links {
-    display: flex;
-    gap: 24px;
-  }
-
-  .footer-links a {
-    font-size: 13px;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .footer-links a:hover { color: var(--text); }
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 12px 18px; }
+  .nav-logo { font-size: 15px; }
+  main { padding: 80px 24px 60px; }
+  footer { padding: 24px; flex-direction: column; gap: 10px; text-align: center; }
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="/" class="nav-logo">Homemade<span>Remote</span></a>
+  <a href="/" class="nav-logo">Homemade <span>Remote</span></a>
   <a href="/" class="nav-back">&larr; Back</a>
 </nav>
 
 <main>
   <div class="page-label">Legal</div>
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: February 25, 2026 &middot; Version 1.1</p>
+  <p class="updated">Last updated: April 7, 2026 &middot; Version 1.2</p>
 
   <div class="zero-data-badge">No data collected &mdash; ever</div>
 
   <div class="tldr">
-    <div class="tldr-label">Plain English Summary</div>
+    <div class="tldr-label">Plain English</div>
     <p>Homemade Remote collects <strong>nothing</strong>. Every command from your iPhone goes directly to your Mac over your local WiFi network. No data touches our servers &mdash; we don't have any. No accounts. No tracking. No analytics. This app is physically incapable of sending your data anywhere except your own Mac.</p>
   </div>
 
@@ -294,42 +316,30 @@
 
   <section>
     <h2>8. Children</h2>
-    <p>Homemade Remote is not directed at children under 13 and does not knowingly collect information from anyone. As we collect no data from any user, we are compliant with COPPA by design. If you believe a child has somehow provided personal information to us, contact us immediately and we will take steps to remove it.</p>
+    <p>Homemade Remote is not directed at children under 13 and does not knowingly collect information from anyone. As we collect no data from any user, we are compliant with COPPA by design.</p>
   </section>
 
   <section>
-    <h2>9. Security &amp; Incident Response</h2>
+    <h2>9. Security</h2>
     <p>Homemade Remote is designed with a zero-data architecture. Because no personal data is collected, stored, or transmitted, the attack surface for a data breach is effectively zero.</p>
-    <p>In the unlikely event that a security vulnerability is discovered in our software or infrastructure that could affect users, we will:</p>
-    <ul>
-      <li>Publicly disclose the issue within 72 hours of confirmation</li>
-      <li>Describe the nature of the vulnerability and any potential impact</li>
-      <li>Release a fix or mitigation as quickly as reasonably possible</li>
-      <li>Post an update on homemaderemote.com</li>
-    </ul>
+    <p>In the unlikely event that a security vulnerability is discovered, we will publicly disclose the issue within 72 hours and release a fix as quickly as possible.</p>
   </section>
 
   <section>
-    <h2>10. Do Not Track</h2>
-    <p>Homemade Remote honors Do Not Track signals by default &mdash; because we do not track anyone in the first place. There is no tracking to disable.</p>
+    <h2>10. Changes to This Policy</h2>
+    <p>If we ever change our data practices, we will update this policy and bump the version number at the top. Our position: <strong>we will never sell, rent, or share your data with anyone, under any circumstances.</strong></p>
   </section>
 
   <section>
-    <h2>11. Changes to This Policy</h2>
-    <p>If we ever change our data practices &mdash; for example, if a future version adds optional analytics &mdash; we will update this policy, bump the version number at the top of this page, and (if the change is material) notify users through an in-app notice before the changes take effect.</p>
-    <p>Our position: <strong>we will never sell, rent, or share your data with anyone, under any circumstances.</strong></p>
-  </section>
-
-  <section>
-    <h2>12. Contact</h2>
-    <p>Questions, requests, or concerns about this privacy policy:</p>
+    <h2>11. Contact</h2>
     <p><strong>Email:</strong> <a href="mailto:privacy@scottyoung.co">privacy@scottyoung.co</a><br>
     <strong>Developer:</strong> Scott Young, independent developer</p>
   </section>
 </main>
 
 <footer>
-  <span class="footer-copy">&copy; 2026 Homemade Remote</span>
+  <div class="footer-logo">Homemade Remote</div>
+  <p class="footer-copy">&copy; 2026</p>
   <div class="footer-links">
     <a href="/homemaderemote-privacy.html">Privacy</a>
     <a href="/homemaderemote-terms.html">Terms</a>
