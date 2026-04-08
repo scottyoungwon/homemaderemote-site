@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support — Homemade Remote</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0a0a0a;
+  --surface: #111;
+  --border: #1a1a1a;
+  --border-bright: #252525;
+  --text: #e8dfd0;
+  --text-dim: #666;
+  --text-faint: #333;
+  --bone: #e8dfd0;
+  --bone-dim: rgba(232,224,212,0.08);
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 18px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  background: rgba(10, 10, 10, 0.8);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--text);
+  text-decoration: none;
+}
+.nav-logo span { color: rgba(232,224,212,0.55); }
+
+.nav-back {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.nav-back:hover { color: var(--text); }
+
+/* ── MAIN ── */
+main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 120px 40px 100px;
+}
+
+.page-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 14px;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+
+.updated {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-faint);
+  margin-bottom: 48px;
+  letter-spacing: 0.5px;
+}
+
+/* ── CONTACT CARD ── */
+.contact-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--bone);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin-bottom: 56px;
+}
+
+.contact-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+}
+
+.contact-card p {
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.65;
+}
+
+.contact-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bone-dim);
+  border: 1px solid rgba(232,224,212,0.1);
+  border-radius: 100px;
+  padding: 8px 18px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--bone);
+  margin-top: 14px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.contact-email:hover {
+  background: rgba(232,224,212,0.12);
+  opacity: 1;
+}
+
+section { margin-bottom: 44px; }
+
+h2 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+p {
+  font-size: 15px;
+  color: var(--text-dim);
+  margin-bottom: 14px;
+  line-height: 1.75;
+}
+p:last-child { margin-bottom: 0; }
+
+ul {
+  margin: 12px 0 14px 0;
+  padding-left: 20px;
+}
+li {
+  font-size: 15px;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+  line-height: 1.65;
+}
+
+strong { color: var(--text); font-weight: 500; }
+a { color: var(--bone); text-decoration: none; opacity: 0.7; transition: opacity 0.15s; }
+a:hover { opacity: 1; }
+
+/* ── FAQ ── */
+.faq-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+}
+
+.faq-q {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.faq-a {
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+/* ── FOOTER ── */
+footer {
+  padding: 36px 80px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.footer-copy {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-faint);
+}
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+.footer-links a {
+  font-size: 11px;
+  color: var(--text-faint);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  transition: color 0.15s;
+}
+.footer-links a:hover { color: var(--text-dim); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 12px 18px; }
+  .nav-logo { font-size: 15px; }
+  main { padding: 80px 24px 60px; }
+  footer { padding: 24px; flex-direction: column; gap: 10px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Homemade <span>Remote</span></a>
+  <a href="/" class="nav-back">&larr; Back</a>
+</nav>
+
+<main>
+  <div class="page-label">Support</div>
+  <h1>Get Help</h1>
+  <p class="updated">Homemade Remote &mdash; iPhone remote for your Mac</p>
+
+  <div class="contact-card">
+    <div class="contact-label">Contact Us</div>
+    <p>Have a question, found a bug, or need help getting set up? Reach out and we'll get back to you within 24 hours.</p>
+    <a href="mailto:support@homemaderemote.com" class="contact-email">support@homemaderemote.com</a>
+  </div>
+
+  <section>
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">How do I connect my iPhone to my Mac?</div>
+      <p class="faq-a">Both devices need to be on the same WiFi network. Download the Mac companion app from <a href="/">homemaderemote.com</a> and launch it. Then open the iPhone app &mdash; it will automatically discover your Mac using Bonjour. Tap to connect.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">My iPhone can't find my Mac</div>
+      <p class="faq-a">Make sure both devices are on the same WiFi network. Check that the Mac companion app is running (you'll see the Homemade Remote icon in your menu bar). If you're on a corporate or public network, local device discovery may be blocked &mdash; try a home network instead.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">The app is asking for Accessibility permission on my Mac</div>
+      <p class="faq-a">The Mac companion needs Accessibility permission to control your cursor, keyboard, and media playback. Go to <strong>System Settings &rarr; Privacy &amp; Security &rarr; Accessibility</strong> and enable Homemade Remote. You may need to restart the companion app after granting permission.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What does each mode do?</div>
+      <p class="faq-a"><strong>Media</strong> &mdash; play/pause, volume, skip tracks, and switch between apps like YouTube and Netflix. <strong>Trackpad</strong> &mdash; move your Mac's cursor from the couch, scroll, and click. <strong>Terminal</strong> &mdash; type commands into iTerm2 or Terminal without getting up.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Is my data being sent anywhere?</div>
+      <p class="faq-a">No. Homemade Remote works entirely over your local WiFi. No data is sent to any server, ever. No accounts, no analytics, no tracking. See our <a href="/homemaderemote-privacy.html">Privacy Policy</a> for details.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Where do I get the Mac companion app?</div>
+      <p class="faq-a">Download it from <a href="/">homemaderemote.com</a>. It runs on macOS 12 and later. Launch it and you'll see the Homemade Remote icon in your menu bar.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">The connection drops or feels laggy</div>
+      <p class="faq-a">This usually means your WiFi signal is weak between your devices. Try moving closer to your router, or make sure both devices are on the same band (5GHz is faster). Restarting the Mac companion app can also help.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>System Requirements</h2>
+    <ul>
+      <li><strong>iPhone:</strong> iOS 16 or later</li>
+      <li><strong>Mac:</strong> macOS 12 (Monterey) or later</li>
+      <li><strong>Network:</strong> Both devices on the same WiFi network</li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-logo">Homemade Remote</div>
+  <p class="footer-copy">&copy; 2026</p>
+  <div class="footer-links">
+    <a href="/support.html">Support</a>
+    <a href="/homemaderemote-privacy.html">Privacy</a>
+    <a href="/homemaderemote-terms.html">Terms</a>
+    <a href="/">Home</a>
+  </div>
+</footer>
+
+</body>
+</html>
